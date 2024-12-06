@@ -84,12 +84,17 @@ function App() {
   };
 
   const clearid = (id) => {
-    setMaintextarea((prev) =>
-      prev.map((textarea) =>
-        textarea.id === id ? { ...textarea, content: "" } : textarea
-      )
-    );
-    window.location.reload();
+    // setMaintextarea((prev) =>
+    //   prev.map((textarea) =>
+    //     textarea.id === id ? { ...textarea, content: "" } : textarea
+    //   )
+    // );
+    // window.location.reload();
+
+    const updatedArray = maintextarea.filter((note) => note.id !== id);
+    setMaintextarea(updatedArray);
+    localStorage.setItem(`textarea${id}`, JSON.stringify(updatedArray));
+
   };
 
   const showoptions = (id) => {
